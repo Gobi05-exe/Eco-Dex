@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 
 console.log("MONGODB_URI:", process.env.MONGODB_URI); // Debugging MongoDB URI
 
-connect();
+await connect();
 
 export async function POST(request: NextRequest) {
     try {
@@ -14,6 +14,25 @@ export async function POST(request: NextRequest) {
         const { username, email, password } = reqBody;
 
         console.log("Received request body:", reqBody); // Log the request body
+
+        const collectionName = `${username}.botids`;
+
+        // Get list of collections
+
+        const db = mongoose.connection.db;
+
+        if (!db) {
+            return NextResponse.json({ error: "Database not connected" }, { status: 500 });
+        }
+
+        const collections = await db.listCollections().toArray();
+
+        const exists = collections.some(col => col.name === collectionName);
+
+        if (!exists) {
+            console.log(`Required collection '${collectionName}' does not exist.`)
+            return NextResponse.json({ error: `Required collection '${collectionName}' does not exist.` }, { status: 400 });
+        }
 
         // Check if user already exists
         const existingUser = await User.findOne({ email });
@@ -53,10 +72,10 @@ export async function POST(request: NextRequest) {
         });
     } catch (error: unknown) {
         console.error("Error in signup process:", error); // Log the error
-        
+
         // Ensure proper error handling
         const errorMessage = error instanceof Error ? error.message : "An unknown error occurred";
-        
+
         return NextResponse.json({ error: errorMessage }, { status: 500 });
     }
 }
