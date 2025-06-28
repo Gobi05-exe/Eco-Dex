@@ -17,32 +17,33 @@ EcoDex consists of four main parts:
 ### **1. Machine Learning Algorithm**
 
 #### Garbage Detection:
-- Utilizes an Ultralytics YOLOv8 architectural model.
-- Custom-trained on the TACO dataset comprising 60 classes.
+- Utilizes the **Ultralytics RT-DETR** model architecture.
+- Fine-tuned on a modified version of the TACO dataset, where 60 original classes were aggregated into 25 target classes.
+- The dataset was enhanced using extensive image augmentation techniques to address class imbalance and improve generalization.
 
 #### Distance and Angle Calculation:
 - Uses camera focal length and horizontal field of view (HFoV) properties.
 - **Focal Length Calculation Formula:**
 
-  ```
-  f = (w * d) / W
-  ```
+```
+f = (w * d) / W
+```
 
-  - `w`: Width in pixels
-  - `W`: Actual width of the object
-  - `d`: Distance from the camera
+- `w`: Width in pixels  
+- `W`: Actual width of the object  
+- `d`: Distance from the camera
 
 - **Distance Calculation Formula:**
 
-  ```
-  d = (W * f) / w
-  ```
+```
+d = (W * f) / w
+```
 
 - **Angle Calculation Formula:**
 
-  ```
-  theta = (width_of_frame / Hfov) * (centre_of_screen - centre_of_bounding_box)
-  ```
+```
+theta = (width_of_frame / Hfov) * (centre_of_screen - centre_of_bounding_box)
+```
 
 #### Optimized navigation to target object:
 - Calculates delay for the bot to reach a particular distance, optimizing navigation based on detected objects.
@@ -70,7 +71,6 @@ EcoDex consists of four main parts:
 
 - **User-Based Monitoring:**
   - Each user or company can log in to access their bot's data.
-
   - Displays collected garbage details (e.g., weight in kilograms), bot location, collection points, and current bot status.
 
 ---
@@ -80,7 +80,6 @@ EcoDex consists of four main parts:
 #### Purpose:
 1. **Autonomous Functionality Backup:**
    - Ensures that if the bot's autonomous system fails, manual controls can take over seamlessly.
-
 2. **Debugging:**
    - Facilitates debugging and correcting hardware errors.
 
@@ -104,25 +103,18 @@ EcoDex consists of four main parts:
 - **Movement System:** Uses omni wheels for enhanced maneuverability.
 
 ![image](https://github.com/user-attachments/assets/30fd49c8-c8c9-457a-9916-933f1629ecaf)
-
 ![image](https://github.com/user-attachments/assets/112dd79c-94be-4664-adea-4bd9f5e40e10)
 
-**Storage Unit**
-
-![image](https://github.com/user-attachments/assets/c0160ed6-7b6d-4233-9577-83c4674449b7)
-
+**Storage Unit**  
+![image](https://github.com/user-attachments/assets/c0160ed6-7b6d-4233-9577-83c4674449b7)  
 ![image](https://github.com/user-attachments/assets/56bc6e16-7cc7-4855-b138-e9b64b12c1b3)
 
-**Collection Mechanism**
-
-![image](https://github.com/user-attachments/assets/dee31dbd-eb06-45be-a0d0-fc205df8a9d0)
-
+**Collection Mechanism**  
+![image](https://github.com/user-attachments/assets/dee31dbd-eb06-45be-a0d0-fc205df8a9d0)  
 ![image](https://github.com/user-attachments/assets/ce277c17-4e39-4355-80aa-57cbf646ae41)
 
-**Movement (Omni Wheels)**
-
-![image](https://github.com/user-attachments/assets/a638a27d-15b3-4d49-bea5-46da81f9a42b)
-
+**Movement (Omni Wheels)**  
+![image](https://github.com/user-attachments/assets/a638a27d-15b3-4d49-bea5-46da81f9a42b)  
 ![image](https://github.com/user-attachments/assets/93102298-a75f-4ba1-b17e-2edbd18976d9)
 
 ---
@@ -165,10 +157,8 @@ EcoDex consists of four main parts:
 ### Flow Diagram
 - Flowchart showing system-level interaction among detection, collection, control, and monitoring.
 
-![image](https://github.com/user-attachments/assets/3bf39f34-2526-4fab-8549-8b031f5aa04d)
-
+![image](https://github.com/user-attachments/assets/3bf39f34-2526-4fab-8549-8b031f5aa04d)  
 ![image](https://github.com/user-attachments/assets/bf6454ac-0b4e-4d57-8225-d30a4694f6ef)
-
 
 ---
 
