@@ -52,7 +52,7 @@ theta = (width_of_frame / Hfov) * (centre_of_screen - centre_of_bounding_box)
 ---
 
 ### **2. ROS-Based Communication**
-- Employs ROS1 as the primary tool for device communication.
+- Employs ROS2 as the primary tool for device communication.
 - Tasks are modularized into multiple publisher and subscriber nodes:
   - Input from camera
   - Object detection
