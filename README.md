@@ -119,7 +119,7 @@ theta = (width_of_frame / Hfov) * (centre_of_screen - centre_of_bounding_box)
 
 ---
 
-### Object Detection Using YOLOv11
+### Object Detection Using Ultralytics RTDETR
 - Fast and accurate real-time waste detection in cluttered environments.
 - Pretrained to recognize various waste categories.
 - Optimized for low-power devices.
