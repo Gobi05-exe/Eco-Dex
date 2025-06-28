@@ -38,7 +38,7 @@ f = (w * d) / W
 ```
 d = (W * f) / w
 ```
-  ![image](https://github.com/user-attachments/assets/4730d42d-f5f9-43c2-82c5-b9e590202065)
+![411771134-4730d42d-f5f9-43c2-82c5-b9e590202065](https://github.com/user-attachments/assets/60e1bed0-f32d-428e-96b9-7125f50ec08f)
   
 - **Angle Calculation Formula:**
 
