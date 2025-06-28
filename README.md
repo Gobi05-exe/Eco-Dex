@@ -108,16 +108,19 @@ EcoDex consists of four main parts:
 ![image](https://github.com/user-attachments/assets/112dd79c-94be-4664-adea-4bd9f5e40e10)
 
 **Storage Unit**
+
 ![image](https://github.com/user-attachments/assets/c0160ed6-7b6d-4233-9577-83c4674449b7)
 
 ![image](https://github.com/user-attachments/assets/56bc6e16-7cc7-4855-b138-e9b64b12c1b3)
 
 **Collection Mechanism**
+
 ![image](https://github.com/user-attachments/assets/dee31dbd-eb06-45be-a0d0-fc205df8a9d0)
 
 ![image](https://github.com/user-attachments/assets/ce277c17-4e39-4355-80aa-57cbf646ae41)
 
 **Movement (Omni Wheels)**
+
 ![image](https://github.com/user-attachments/assets/a638a27d-15b3-4d49-bea5-46da81f9a42b)
 
 ![image](https://github.com/user-attachments/assets/93102298-a75f-4ba1-b17e-2edbd18976d9)
