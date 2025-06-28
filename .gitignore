@@ -1,1 +1,12 @@
-node_modules/
+WebApp/node_modules/
+
+# ignore build install and log files
+raged-ros2/build/
+raged-ros2/install/
+raged-ros2/log/
+
+# ignore .venv
+raged-ros2/.venv/
+
+# ignore temp.py
+raged-ros2/temp.py

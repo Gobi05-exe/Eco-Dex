@@ -1,0 +1,146 @@
+-Packages-
+camera
+control
+website
+
+-Nodes-
+camera
+ml
+
+auto -> replaces position node
+manual -> sets auto/manual on the mode topic => 1: auto , 0: manual
+communication -> combines everything and send it to the arduino
+
+waste_data
+check_user -> run once on start
+
+-Topics-
+image -> image from camera is sent
+detect -> flag sent to pause or play model
+position -> width height and distance from center of frame info sent
+class_info -> class of the object detected is sent
+mode -> auto or manual
+control -> from auto to communication (contains [ahead/rotate, bin_section])
+action -> from manual to communication
+
+//serial -> for serial debugging
+
+-Publishers-
+image_pub -> on the image topic
+detect_pub -> in the manual node and communication node
+pos_pub -> on the position topic
+class_pub -> on the class_info node
+control_pub -> send the angle or distance (in auto node)
+mode_pub -> manual or auto (in manual node)
+action_pub -> the manual action to be done (as mention in the array) (in manual node)
+
+//serial -> for serial debugging
+
+-Subscribers-
+image_sub -> on the image topic
+detect_sub -> on the detect topic
+pos_sub -> on the position topic
+control_sub -> on the control topic (in communication node)
+mode_sub -> on the mode topic (in ml node and communication node)
+action_sub -> in the communication node
+
+-ARRAY-
+
+* the array for auto and manual will be slightly different
+
+* For auto:
+[auto/manual, ahead/rotate, (distance or angle value) or bin_section]
+[2 states, 3 states, 4 states]
+[
+    auto/manual:
+    1 is auto
+    0 is manual,
+
+    ahead/rotate:
+    0 is do nothing and go to next
+    1 is go ahead and return to ml node
+    2 is rotate and return to ml node,
+
+    (if ahead/rotate is not 0)
+    distance or angle value:
+    float value of distance or angle
+
+    OR
+
+    (if ahead/rotate is 0)
+    bin_section:
+    0 is skip
+    1 is section 1
+    2 is section 2
+    3 is section 3
+    4 is section 4,
+]
+
+* For manual:
+[auto/manual, action]
+[2 states, 3 states, 4 states]
+[
+    auto/manual:
+    1 is auto
+    0 is manual,
+
+    action:
+    w -> forward
+    a -> left
+    s -> back
+    d -> rigth
+
+    1 -> section 1 of bin
+    2 -> section 2 of bin
+    3 -> section 3 of bin
+    4 -> section 4 of bin
+
+    l -> lid open
+    k -> lid close
+
+    z -> left claw open
+    x -> left claw close
+
+    c -> right claw open
+    v -> right claw close
+]
+
+-NOTE-
+* Add the following line to the setup.cfg file in your each of your packages:
+
+[build_scripts]
+executable = /usr/bin/env python3
+
+* This is in order to include the python from your virtual environment
+
+-ISSUES-
+* In Manual mode the position topic will still be recieving data although unsed
+
+-TODO-
+* Add bin section in ml node (in the get largest function)
+* Cap stepper motor to only turn 360 deg and always return to default position before shutdown
+
+
+- ARDUINO PIN ASSIGNMENT -
+
+0 -> lid stepper -> IN1
+1 -> lid stepper -> IN2
+2 -> lid stepper -> IN3
+3 -> claw left -> PWM
+4 -> lid stepper -> IN4 
+5 -> base motor driver -> PWM
+6 -> base motor driver -> PWM
+7 -> base motor driver -> DIR
+8 -> base motor driver -> DIR
+9 -> base motor driver -> PWM
+10 -> base motor driver -> PWM
+11 -> claw rigth -> PWM
+12 -> base motor driver -> DIR
+13 -> base motor driver -> DIR
+
+A5 -> unassigned
+A4 -> unassigned
+A3 -> bin stepper -> IN4
+A2 -> bin stepper -> IN3
+A1 -> bin stepper -> IN2
+A0 -> bin stepper -> IN1
